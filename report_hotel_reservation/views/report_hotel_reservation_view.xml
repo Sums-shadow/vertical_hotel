@@ -27,19 +27,18 @@
     </record>
 
     <!-- Search view of report hotel reservation status -->
-    <record id="report_hotel_reservation_status_search" model="ir.ui.view">
+    <!-- <record id="report_hotel_reservation_status_search" model="ir.ui.view">
         <field name="name">report.hotel.reservation.status.search</field>
         <field name="model">report.hotel.reservation.status</field>
         <field name="arch" type="xml">
             <search string="Hotel Reservation Status">
                 <filter string="Draft" domain="[('state','=', 'draft')]"
                         help="Rooms in draft state"/>
-                <filter string="Confirm" domain="[('state','=', 'confirm')]"
-                        help="Rooms in confirm state"/>
+                <filter string="Confirm"  />
                 <filter string="Done" domain="[('state','=', 'done')]" help="Rooms in done state"/>
             </search>
         </field>
-    </record>
+    </record> -->
 
     <!-- Graph view (Pie) of report hotel reservation status -->
     <record id="view_hotel_reservation_status_graph" model="ir.ui.view">
@@ -69,7 +68,6 @@
     <record id="action_report_hotel_reservation_status_tree_graph" model="ir.actions.act_window">
         <field name="name">States By Reservation</field>
         <field name="res_model">report.hotel.reservation.status</field>
-        <field name="view_type">form</field>
         <field name="view_mode">graph,tree</field>
     </record>
 
@@ -77,7 +75,6 @@
     <record id="action_report_hotel_reservation_status_tree_graph_bar12" model="ir.actions.act_window">
         <field name="name">States By Reservation</field>
         <field name="res_model">report.hotel.reservation.status</field>
-        <field name="view_type">form</field>
         <field name="view_mode">pivot,graph,tree</field>
         <field name="context">
             {'graph_view_ref':'report_hotel_reservation.view_hotel_reservation_status_graph_bar','tree_view_ref':'report_hotel_reservation.view_hotel_reservation_status_tree'}

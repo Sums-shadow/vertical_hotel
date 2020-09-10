@@ -26,18 +26,7 @@
     </record>
 
     <!-- Search view of report hotel restaurant status -->
-    <record id="report_hotel_restaurant_status_search" model="ir.ui.view">
-        <field name="name">report.hotel.restaurant.status.search</field>
-        <field name="model">report.hotel.restaurant.status</field>
-        <field name="arch" type="xml">
-            <search string="Hotel Restaurant Status">
-                <filter string="Draft" domain="[('state','=', 'draft')]" help="Rooms in draft state"/>
-                <filter string="Confirm" domain="[('state','=', 'confirm')]" help="Rooms in confirm state"/>
-                <filter string="done" domain="[('state','=', 'done')]" help="Rooms in done state"/>
-            </search>
-        </field>
-    </record>
-
+    
     <!-- Graph view (Pie) of report hotel restaurant status -->
     <record id="view_hotel_restaurant_status_graph" model="ir.ui.view">
         <field name="name">report.hotel.restaurant.status.graph</field>

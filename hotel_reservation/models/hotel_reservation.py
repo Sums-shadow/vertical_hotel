@@ -37,10 +37,10 @@ class HotelReservation(models.Model):
     )
     partner_id = fields.Many2one(
         "res.partner",
-        "Guest Name",
+        "Nom de l'invité",
         readonly=True,
         index=True,
-        required=True,
+         
         states={"draft": [("readonly", False)]},
         track_visibility="onchange",
     )
