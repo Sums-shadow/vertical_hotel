@@ -1,0 +1,88 @@
+<odoo>
+    <!-- Form view of hotel folio attrs="{'invisible': ['|',('state', 'in', ('draft','cancel','done')), ('in', 'invoiced')]}"-->
+    <record id="view_hotel_folio1_form" model="ir.ui.view">
+        <field name="name">hotel.folio.form</field>
+        <field name="model">hotel.folio</field>
+        <field name="arch" type="xml">
+            <form string="Folio">
+                <header>
+                    <button name="action_confirm" states="draft" string="Confirm Sale" class="btn-primary" type="object"/>
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice" type="action" class="btn-primary" />
+                    <button name="action_cancel_draft" states="cancel" string="Set to Draft" type="object" icon="fa-check-square-o" class="oe_highlight"/>
+                    <button name="action_cancel" string="Cancel Folio" states="sale" type="object" icon="fa-close" class="oe_highlight"/>
+                    <button name="action_cancel" string="Cancel Folio" states="draft" icon="fa-close" type="object" class="oe_highlight"/>
+                    <button name="action_done" type="object" string="Set to Done" states="sale" class="oe_highlight" help="If a Hotel Folio is done, you cannot modify it manually anymore. However, you will still be able to invoice or deliver. This is used to freeze the Hotel Folio."/>
+                    <field name="state" select="2" widget="statusbar" statusbar_visible="draft,sent,sale,done"/>
+                </header>
+                <sheet>
+
+                    <group colspan="4" col="4">
+                        <field name="date_order" readonly="1"/>
+                        <field name="warehouse_id" string="Branch"/>
+
+                        <field name="hotel_invoice_id" states='sale,done,cancel' readonly="1"/>
+                    </group>
+                    <notebook colspan="4">
+                         
+                        <page string="Other data">
+                            <group>
+                                <field name="user_id"/>
+                                <field name="hotel_policy" />
+                                <field name="client_order_ref"/>
+                            </group>
+                        </page>
+                        <page string="History">
+                            <separator string="Related invoices" colspan="4"/>
+                            <field name="invoice_ids" colspan="4" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of hotel folio -->
+    <record id="view_hotel_folio1_tree" model="ir.ui.view">
+        <field name="name">hotel.folio.tree</field>
+        <field name="model">hotel.folio</field>
+        <field name="arch" type="xml">
+            <tree string="Hotel Folio">
+                <field name="checkin_date"/>
+                <field name="checkout_date"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="date_order"/>
+                <field name="state"/>
+                <field name="amount_total" sum="Total amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Calendar view of hotel folio -->
+    <record id="hotel_folio_calendar_view" model="ir.ui.view">
+        <field name="name">Hotel- Folios Calendar</field>
+        <field name="model">hotel.folio</field>
+        <field name="arch" type="xml">
+            <calendar string="Folios" date_start="checkin_date" color="user_id" date_stop="checkout_date">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="duration"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Search view of hotel folio -->
+
+    <!--graph view of hotel folio -->
+    <record id="view_hotel_folio_graph" model="ir.ui.view">
+        <field name="name">view.hotel.folio.graph</field>
+        <field name="model">hotel.folio</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="date_order" type="row"/>
+                <field name="amount_total" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+</odoo>
