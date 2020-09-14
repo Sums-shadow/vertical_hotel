@@ -10,21 +10,21 @@
                     <div class="row">
                         <h2>
                             <span>
-                                <center>Room Activities Report</center>
+                                <center>Rapport d'activités de la salle</center>
                             </span>
                         </h2>
                     </div>
                     <div class="row mt32 mb32">
                         <div class="text-center">
-                            <strong>From:</strong>
+                            <strong>De:</strong>
                             <span t-esc="data['date_start']"/>
-                            <strong>To:</strong>
+                            <strong>à:</strong>
                             <span t-esc="data['date_end']"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="text-center">
-                            <strong>For Room:-</strong>
+                            <strong>Pour la chambre:-</strong>
                             <span t-esc="data['room_id'][1]"/>
                         </div>
                     </div>
@@ -34,19 +34,19 @@
                                 <strong>Date</strong>
                             </th>
                             <th>
-                                <strong>Activities</strong>
+                                <strong>Activités</strong>
                             </th>
                             <th class="text-center">
-                                <strong>Housekeeper Name</strong>
+                                <strong>Nom de la gouvernante</strong>
                             </th>
                             <th class="text-right">
-                                <strong>Clean Start Time</strong>
+                                <strong>Heure du debut de nettoyage</strong>
                             </th>
                             <th class="text-right">
-                                <strong>Clean End Time</strong>
+                                <strong>Heure de la fin du nettoyage</strong>
                             </th>
                             <th class="text-right">
-                                <strong>Duration</strong>
+                                <strong>Durée</strong>
                             </th>
                         </tr>
                         <tr t-foreach="activity_detail" t-as="detail">

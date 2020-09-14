@@ -9,22 +9,22 @@ class HotelHousekeepingActivities(models.Model):
     _description = "Housekeeping Activities "
 
     a_list = fields.Many2one("hotel.housekeeping", string="Reservation")
-    today_date = fields.Date("Today Date")
+    today_date = fields.Date("Date actuelle")
     activity_name = fields.Many2one(
-        "hotel.activity", string="Housekeeping Activity"
+        "hotel.activity", string="Activité d'entretien ménager"
     )
     housekeeper_id = fields.Many2one(
-        "res.users", string="Housekeeper", required=True
+        "res.users", string="Gouvernant", required=True
     )
-    clean_start_time = fields.Datetime("Clean Start Time", required=True)
-    clean_end_time = fields.Datetime("Clean End Time", required=True)
+    clean_start_time = fields.Datetime("Heure de début de nettoyage", required=True)
+    clean_end_time = fields.Datetime("Date de la fin de nrettoyage", required=True)
     dirty = fields.Boolean(
-        "Dirty",
-        help="Checked if the housekeeping activity" "results as Dirty.",
+        "Sale",
+        help="Vérifié si l'activité d'entretien ménager est sale.",
     )
     clean = fields.Boolean(
-        "Clean",
-        help="Checked if the housekeeping" "activity results as Clean.",
+        "Propre",
+        help="Vérifié si l’activité de nettoyage  est propre.",
     )
 
     @api.constrains("clean_start_time", "clean_end_time")
@@ -38,7 +38,7 @@ class HotelHousekeepingActivities(models.Model):
         """
         if self.clean_start_time >= self.clean_end_time:
             raise ValidationError(
-                _("Start Date Should be less than the End Date!")
+                _("La date de début doit être inférieure à la date de fin!")
             )
 
     @api.model

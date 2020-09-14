@@ -8,19 +8,19 @@
             <form string="Reservation">
                 <header>
                     <button name="send_reservation_maill" type="object"
-                            string="Send Reservation Email" states="confirm"
+                            string="Envoyer un e-mail de réservation" states="confirm"
                             class="oe_highlight"/>
-                    <button name="confirmed_reservation" string="Confirm"
+                    <button name="confirmed_reservation" string="Confirmer"
                             states="draft" class="oe_highlight" type="object"/>
-                    <button name="create_folio" string="Create Folio"
+                    <button name="create_folio" string="Créer Folio"
                             states="confirm"
                             class="oe_highlight" type="object"/>
                     <button name="cancel_reservation"
-                            string="Cancel Reservation"
+                            string="Annuler la Reservation"
                             states="draft,confirm" class="oe_highlight"
                             type="object"/>
                     <button name="set_to_draft_reservation"
-                            string="Set to Draft"
+                            string="Mettre au brouillon"
                             states="cancel" class="oe_highlight" type="object"/>
                     <field name="state" widget="statusbar"/>
                 </header>
@@ -64,27 +64,27 @@
                         <field name="dummy" invisible="True"/>
                     </group>
                     <notebook>
-                        <page string='Reservation Line'>
+                        <page string='Ligne de Reservation '>
                             <field name="reservation_line" colspan="4"
                                    nolabel="1">
-                                <form string="Reservation Line">
-                                    <separator string="Room Type"/>
+                                <form string=" Ligne de Reservation">
+                                    <separator string=" Type de chambre"/>
                                     <field name="name" invisible="1"/>
                                     <field name="categ_id" colspan="4"
                                            nolabel="1"/>
                                     <newline/>
-                                    <separator string="Select Room"/>
+                                    <separator string="Sélectionnez la chambre"/>
                                     <field name="reserve" colspan="4"
-                                           string="Room Number"
+                                           string="Numero de la chambre"
                                            nolabel="1"/>
                                 </form>
-                                <tree string="Reservation Line">
-                                    <field name="reserve" string="Rooms"
+                                <tree string="Ligne de reservation">
+                                    <field name="reserve" string="Chambres"
                                            widget="many2many_tags"/>
                                 </tree>
                             </field>
                         </page>
-                        <page string='History'>
+                        <page string='Historique'>
                             <field name='folio_id' readonly='1'/>
                         </page>
                     </notebook>
@@ -136,7 +136,7 @@
         <field name="model">hotel.reservation</field>
         <field name="priority" eval="2"/>
         <field name="arch" type="xml">
-            <calendar string="Current Reservation" date_start="checkin"
+            <calendar string="Reservation actuelle" date_start="checkin"
                       date_stop="dummy" color="partner_id">
                 <field name="partner_id"/>
             </calendar>

@@ -11,8 +11,8 @@ class ReportHotelRestaurantStatus(models.Model):
     reservation_id = fields.Char("Reservation No", size=64, readonly=True)
     nbr = fields.Integer("Reservatioorder_datan", readonly=True)
     state = fields.Selection(
-        [("draft", "Draft"), ("confirm", "Confirm"), ("done", "Done")],
-        "State",
+        [("draft", "Brouillon"), ("confirm", "Confirmé"), ("done", "Terminé")],
+        "Etat",
         size=16,
         readonly=True,
     )

@@ -14,7 +14,7 @@
                             <h2>
                                 <span>
                                     <strong>
-                                        <center>Kitchen Order Ticket</center>
+                                        <center>Ticket de commande de cuisine</center>
                                     </strong>
                                 </span>
                             </h2>
@@ -28,13 +28,13 @@
                                         <strong>Date</strong>
                                     </th>
                                     <th>
-                                        <strong>Order Number</strong>
+                                        <strong>Numer de commande</strong>
                                     </th>
                                     <th>
-                                        <strong>Served By</strong>
+                                        <strong>SServi par</strong>
                                     </th>
                                     <th>
-                                        <strong>Room Number</strong>
+                                        <strong>Numero de la chambre</strong>
                                     </th>
                                 </tr>
                             </thead>
@@ -58,7 +58,7 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        <strong>Table Number</strong>
+                                        <strong>Numero de la Table </strong>
                                     </th>
                                 </tr>
                             </thead>
@@ -72,17 +72,17 @@
                         </table>
                         <div class="row">
                             <h2>
-                                <span>Food Item List</span>
+                                <span>Liste des produits alimentaires</span>
                             </h2>
                         </div>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
                                     <th>
-                                        <strong>Food Item</strong>
+                                        <strong>produits alimentaires </strong>
                                     </th>
                                     <th>
-                                        <strong>Quantity</strong>
+                                        <strong>Quantité</strong>
                                     </th>
                                 </tr>
                             </thead>

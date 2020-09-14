@@ -31,10 +31,10 @@ class HotelMenucardType(models.Model):
     _name = "hotel.menucard.type"
     _description = "Food Item Type"
 
-    name = fields.Char("Name", required=True)
-    menu_id = fields.Many2one("hotel.menucard.type", string="Food Item Type")
+    name = fields.Char("Nom", required=True)
+    menu_id = fields.Many2one("hotel.menucard.type", string="Type d'élément alimentaire")
     child_ids = fields.One2many(
-        "hotel.menucard.type", "menu_id", "Child Categories"
+        "hotel.menucard.type", "menu_id", "Categorie d'enfant"
     )
 
     
@@ -126,8 +126,8 @@ class HotelRestaurantTables(models.Model):
     _name = "hotel.restaurant.tables"
     _description = "Includes Hotel Restaurant Table"
 
-    name = fields.Char("Table Number", required=True, index=True)
-    capacity = fields.Integer("Capacity")
+    name = fields.Char("Numero de la Table", required=True, index=True)
+    capacity = fields.Integer("Capacité")
 
 
 class HotelRestaurantReservation(models.Model):
@@ -271,17 +271,17 @@ class HotelRestaurantReservation(models.Model):
     _description = "Includes Hotel Restaurant Reservation"
     _rec_name = "reservation_id"
 
-    reservation_id = fields.Char("Reservation No", readonly=True, index=True)
-    room_no = fields.Many2one("product.product", string="Room No", index=True)
-    folio_id = fields.Many2one("hotel.folio", string="Folio No")
+    reservation_id = fields.Char("No de Reservation ", readonly=True, index=True)
+    room_no = fields.Many2one("product.product", string=" No chambre", index=True)
+    folio_id = fields.Many2one("hotel.folio", string=" No Folio")
     start_date = fields.Datetime(
-        "Start Time",
+        "Debut",
         required=True,
         default=(lambda *a: time.strftime(DEFAULT_SERVER_DATETIME_FORMAT)),
     )
-    end_date = fields.Datetime("End Time", required=True)
+    end_date = fields.Datetime("Fin", required=True)
     cname = fields.Many2one(
-        "res.partner", string="Customer Name", required=True, index=True
+        "res.partner", string="Nom du client", required=True, index=True
     )
     partner_address_id = fields.Many2one("res.partner", string="Address")
     tableno = fields.Many2many(
@@ -290,16 +290,16 @@ class HotelRestaurantReservation(models.Model):
         index=True,
         column1="reservation_table_id",
         column2="name",
-        string="Table Number",
+        string="Numero de la Table",
         help="Table reservation detail. ",
     )
     state = fields.Selection(
         [
-            ("draft", "Draft"),
-            ("confirm", "Confirmed"),
-            ("done", "Done"),
-            ("cancel", "Cancelled"),
-            ("order", "Order Created"),
+            ("draft", "Brouillon"),
+            ("confirm", "Confirmé"),
+            ("done", "Terminé"),
+            ("cancel", "Annulé"),
+            ("order", "Commande créer"),
         ],
         "state",
         index=True,
@@ -307,7 +307,7 @@ class HotelRestaurantReservation(models.Model):
         readonly=True,
         default=lambda *a: "draft",
     )
-    is_folio = fields.Boolean("Is a Hotel Guest??")
+    is_folio = fields.Boolean("Est un client de l'hôtel??")
 
     @api.model
     def create(self, vals):
@@ -362,24 +362,24 @@ class HotelRestaurantKitchenOrderTickets(models.Model):
     _description = "Includes Hotel Restaurant Order"
     _rec_name = "orderno"
 
-    orderno = fields.Char("Order Number", readonly=True)
-    resno = fields.Char("Reservation Number")
+    orderno = fields.Char("Numer de commande", readonly=True)
+    resno = fields.Char("Numero de Reservation ")
     kot_date = fields.Datetime("Date")
-    room_no = fields.Char("Room No", readonly=True)
-    w_name = fields.Char("Waiter Name", readonly=True)
+    room_no = fields.Char("No de chambre", readonly=True)
+    w_name = fields.Char("nom du serveur", readonly=True)
     tableno = fields.Many2many(
         "hotel.restaurant.tables",
         "temp_table3",
         "table_no",
         "name",
-        "Table Number",
+        "Numero de la Table",
         help="Table reservation detail.",
     )
     kot_list = fields.One2many(
         "hotel.restaurant.order.list",
         "kot_order_list",
-        "Order List",
-        help="Kitchen order list",
+        "Liste de commande",
+        help="Kitchen Liste de commande",
     )
 
 
@@ -443,9 +443,9 @@ class HotelRestaurantOrder(models.Model):
     
     def generate_kot(self):
         """
-        This method create new record for hotel restaurant order list.
+        This method create new record for hotel restaurant Liste de commande.
         @param self: The object pointer
-        @return: new record set for hotel restaurant order list.
+        @return: new record set for hotel restaurant Liste de commande.
         """
         res = []
         order_tickets_obj = self.env["hotel.restaurant.kitchen.order.tickets"]
@@ -491,7 +491,7 @@ class HotelRestaurantOrder(models.Model):
     )
     room_no = fields.Many2one("product.product", string="Room No")
     folio_id = fields.Many2one("hotel.folio", string="Folio No")
-    waiter_name = fields.Many2one("res.partner", "Waiter Name")
+    waiter_name = fields.Many2one("res.partner", "nom du serveur")
     table_no = fields.Many2many(
         "hotel.restaurant.tables",
         "temp_table2",
@@ -500,7 +500,7 @@ class HotelRestaurantOrder(models.Model):
         "Table Number",
     )
     order_list = fields.One2many(
-        "hotel.restaurant.order.list", "o_list", "Order List"
+        "hotel.restaurant.order.list", "o_list", "Liste de commande"
     )
     tax = fields.Float("Tax (%) ")
     amount_subtotal = fields.Float(
@@ -523,7 +523,7 @@ class HotelRestaurantOrder(models.Model):
         default=lambda *a: "draft",
     )
     is_folio = fields.Boolean(
-        "Is a Hotel Guest??", help="is customer reside" "in hotel or not"
+        "Est un client de l'hôtel??", help="is customer reside" "in hotel or not"
     )
     cname = fields.Many2one(
         "res.partner", string="Customer Name", required=True
@@ -556,10 +556,10 @@ class HotelRestaurantOrder(models.Model):
     
     def generate_kot_update(self):
         """
-        This method update record for hotel restaurant order list.
+        This method update record for hotel restaurant Liste de commande.
         ----------------------------------------------------------
         @param self: The object pointer
-        @return: update record set for hotel restaurant order list.
+        @return: update record set for hotel restaurant Liste de commande.
         """
         order_tickets_obj = self.env["hotel.restaurant.kitchen.order.tickets"]
         rest_order_list_obj = self.env["hotel.restaurant.order.list"]
@@ -649,10 +649,10 @@ class HotelReservationOrder(models.Model):
     
     def reservation_generate_kot(self):
         """
-        This method create new record for hotel restaurant order list.
+        This method create new record for hotel restaurant Liste de commande.
         --------------------------------------------------------------
         @param self: The object pointer
-        @return: new record set for hotel restaurant order list.
+        @return: new record set for hotel restaurant Liste de commande.
         """
         res = []
         order_tickets_obj = self.env["hotel.restaurant.kitchen.order.tickets"]
@@ -686,10 +686,10 @@ class HotelReservationOrder(models.Model):
     
     def reservation_update_kot(self):
         """
-        This method update record for hotel restaurant order list.
+        This method update record for hotel restaurant Liste de commande.
         ----------------------------------------------------------
         @param self: The object pointer
-        @return: update record set for hotel restaurant order list.
+        @return: update record set for hotel restaurant Liste de commande.
         """
         order_tickets_obj = self.env["hotel.restaurant.kitchen.order.tickets"]
         rest_order_list_obj = self.env["hotel.restaurant.order.list"]
@@ -761,16 +761,16 @@ class HotelReservationOrder(models.Model):
     _description = "Reservation Order"
     _rec_name = "order_number"
 
-    order_number = fields.Char("Order No", readonly=True)
+    order_number = fields.Char(" No commande", readonly=True)
     reservationno = fields.Many2one(
-        "hotel.restaurant.reservation", "Reservation No"
+        "hotel.restaurant.reservation", " No Reservation"
     )
     order_date = fields.Datetime(
         "Date",
         required=True,
         default=(lambda *a: time.strftime(DEFAULT_SERVER_DATETIME_FORMAT)),
     )
-    waitername = fields.Many2one("res.partner", "Waiter Name")
+    waitername = fields.Many2one("res.partner", "Nom du serveur")
     table_no = fields.Many2many(
         "hotel.restaurant.tables",
         "temp_table4",
@@ -779,11 +779,11 @@ class HotelReservationOrder(models.Model):
         "Table Number",
     )
     order_list = fields.One2many(
-        "hotel.restaurant.order.list", "o_l", "Order List"
+        "hotel.restaurant.order.list", "o_l", "Liste de commande"
     )
     tax = fields.Float("Tax (%) ")
     amount_subtotal = fields.Float(
-        compute="_compute_amount_all_total", method=True, string="Subtotal"
+        compute="_compute_amount_all_total", method=True, string="Sous-total"
     )
     amount_total = fields.Float(
         compute="_compute_amount_all_total", method=True, string="Total"
@@ -797,7 +797,7 @@ class HotelReservationOrder(models.Model):
         "Rest",
     )
     state = fields.Selection(
-        [("draft", "Draft"), ("order", "Order Created"), ("done", "Done")],
+        [("draft", "Brouillon"), ("order", "Commande créer"), ("done", "Terminé")],
         "State",
         index=True,
         required=True,
@@ -806,7 +806,7 @@ class HotelReservationOrder(models.Model):
     )
     folio_id = fields.Many2one("hotel.folio", string="Folio No")
     is_folio = fields.Boolean(
-        "Is a Hotel Guest??", help="is customer reside" "in hotel or not"
+        "Est un client de l'hôtel??", help="is customer reside" "in hotel or not"
     )
 
     @api.model
@@ -851,14 +851,14 @@ class HotelRestaurantOrderList(models.Model):
     _name = "hotel.restaurant.order.list"
     _description = "Includes Hotel Restaurant Order"
 
-    o_list = fields.Many2one("hotel.restaurant.order", "Restaurant Order")
-    o_l = fields.Many2one("hotel.reservation.order", "Reservation Order")
+    o_list = fields.Many2one("hotel.restaurant.order", "Commande de Restaurant ")
+    o_l = fields.Many2one("hotel.reservation.order", "Commane de Reservation ")
     kot_order_list = fields.Many2one(
-        "hotel.restaurant.kitchen.order.tickets", "Kitchen Order Tickets"
+        "hotel.restaurant.kitchen.order.tickets", "Billets de commande de cuisine"
     )
-    name = fields.Many2one("hotel.menucard", "Item Name", required=True)
-    item_qty = fields.Integer("Qty", required=True)
-    item_rate = fields.Float("Rate")
+    name = fields.Many2one("hotel.menucard", "Nom de l'element", required=True)
+    item_qty = fields.Integer("Qté", required=True)
+    item_rate = fields.Float("Prix")
     price_subtotal = fields.Float(
-        compute="_compute_price_subtotal", method=True, string="Subtotal"
+        compute="_compute_price_subtotal", method=True, string="Sous-total"
     )

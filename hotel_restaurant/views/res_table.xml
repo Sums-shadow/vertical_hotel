@@ -12,7 +12,7 @@
                     <div class="row">
                         <h2>
                             <span>
-                                <center>Table Reservation List</center>
+                                <center> List de Table de Reservation</center>
                             </span>
                         </h2>
                     </div>
@@ -28,16 +28,16 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <strong>Reservation No</strong>
+                                    <strong> No de Reservation</strong>
                                 </th>
                                 <th>
-                                    <strong>Customer Name</strong>
+                                    <strong>Nom du client</strong>
                                 </th>
                                 <th>
-                                    <strong>Start Date</strong>
+                                    <strong>Date de debut</strong>
                                 </th>
                                 <th>
-                                    <strong>End Date</strong>
+                                    <strong>Date de fin</strong>
                                 </th>
                             </tr>
                         </thead>

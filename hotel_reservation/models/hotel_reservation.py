@@ -19,7 +19,7 @@ class HotelReservation(models.Model):
 
     reservation_no = fields.Char("Reservation No", readonly=True)
     date_order = fields.Datetime(
-        "Date Ordered",
+        "Date Commandée",
         readonly=True,
         required=True,
         index=True,
@@ -55,7 +55,7 @@ class HotelReservation(models.Model):
     )
     partner_invoice_id = fields.Many2one(
         "res.partner",
-        "Invoice Address",
+        "Addresse facture",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="Invoice address for " "current reservation.",
@@ -63,7 +63,7 @@ class HotelReservation(models.Model):
     )
     partner_order_id = fields.Many2one(
         "res.partner",
-        "Ordering Contact",
+        "Contact de la commande",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="The name and address of the "
@@ -73,35 +73,35 @@ class HotelReservation(models.Model):
     )
     partner_shipping_id = fields.Many2one(
         "res.partner",
-        "Delivery Address",
+        " Addresse de la delivrance",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="Delivery address" "for current reservation. ",
         track_visibility="onchange",
     )
     checkin = fields.Datetime(
-        "Expected-Date-Arrival",
+        "Date d'estimation d'arrivée",
         required=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
         track_visibility="onchange",
     )
     checkout = fields.Datetime(
-        "Expected-Date-Departure",
+        "Date d'estimation de depart",
         required=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
         track_visibility="onchange",
     )
     adults = fields.Integer(
-        "Adults",
+        "Adultes",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="List of adults there in guest list. ",
         track_visibility="onchange",
     )
     children = fields.Integer(
-        "Children",
+        "Enfants",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="Number of children there in guest list.",
@@ -110,17 +110,17 @@ class HotelReservation(models.Model):
     reservation_line = fields.One2many(
         "hotel_reservation.line",
         "line_id",
-        "Reservation Line",
+        "Ligne de Reservation",
         help="Hotel room reservation details.",
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
     state = fields.Selection(
         [
-            ("draft", "Draft"),
-            ("confirm", "Confirm"),
-            ("cancel", "Cancel"),
-            ("done", "Done"),
+            ("draft", "Brouillon"),
+            ("confirm", "Confirmer"),
+            ("cancel", "Annuler"),
+            ("done", "Terminé"),
         ],
         "State",
         readonly=True,
@@ -138,7 +138,7 @@ class HotelReservation(models.Model):
     no_of_folio = fields.Integer("Folio", compute="_compute_folio_id")
     dummy = fields.Datetime("Dummy")
     open = fields.Boolean(
-        string="Open Rooms",
+        string="Chambre ouverte",
         help="Should the rooms be opened for arriving guest.",
         track_visibility="onchange",
     )
@@ -165,7 +165,7 @@ class HotelReservation(models.Model):
             if reserv_rec.state != "draft":
                 raise ValidationError(
                     _(
-                        "You cannot delete Reservation in %s\
+                        "Vous ne pouvez pas supprimer la ligne dans %s\
                                          state."
                     )
                     % (reserv_rec.state)
@@ -192,7 +192,7 @@ class HotelReservation(models.Model):
             for rec in reservation.reservation_line:
                 if len(rec.reserve) == 0:
                     raise ValidationError(
-                        _("Please Select Rooms For Reservation.")
+                        _("Veuillez selectionner une chambre pour la reservation")
                     )
                 for room in rec.reserve:
                     cap += room.capacity
@@ -206,7 +206,7 @@ class HotelReservation(models.Model):
                         )
                     )
             if reservation.adults <= 0:
-                raise ValidationError(_("Adults must be more than 0"))
+                raise ValidationError(_("Nombre d'adulte doit etre superieur à 0"))
 
     @api.constrains("checkin", "checkout")
     def check_in_out_dates(self):
@@ -218,15 +218,13 @@ class HotelReservation(models.Model):
             if self.checkin < self.date_order:
                 raise ValidationError(
                     _(
-                        "Check-in date should be greater than \
-                                         the current date."
+                        "Check-in date should be greater than  La date d'arrivée doit etre superieur à la date actuelle"
                     )
                 )
             if self.checkout < self.checkin:
                 raise ValidationError(
                     _(
-                        "Check-out date should be greater \
-                                         than Check-in date."
+                        "Check-out date should be greater la date de sortie doit etre superieur à la date d'arrivée "
                     )
                 )
 

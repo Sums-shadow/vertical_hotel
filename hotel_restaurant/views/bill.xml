@@ -14,16 +14,19 @@
                             <h2>
                                 <span>
                                     <strong>
-                                        <center>Customer Order Bill</center>
+                                        <center>Facture de commande du client</center>
                                     </strong>
                                 </span>
                             </h2>
                         </div>
+
+
+
                         <br/>
                         <table width="100%" class="table table-condensed">
                             <tr>
                                 <td width="50%" style="text-align:left;">
-                                    <strong>Customer Name :</strong>
+                                    <strong>Nom du client :</strong>
                                     <span t-field="o.cname"/>
                                 </td>
                                 <td width="50%" style="text-align:right;">

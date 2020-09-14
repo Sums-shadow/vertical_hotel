@@ -13,12 +13,12 @@ class RoomReservationSummary(models.Model):
     _description = "Room reservation summary"
 
     name = fields.Char(
-        "Reservation Summary", default="Reservations Summary", invisible=True
+        "Resummé de la reservation", default="Reservations Summary", invisible=True
     )
-    date_from = fields.Datetime("Date From")
-    date_to = fields.Datetime("Date To")
-    summary_header = fields.Text("Summary Header")
-    room_summary = fields.Text("Room Summary")
+    date_from = fields.Datetime("de la Date  ")
+    date_to = fields.Datetime(" à la Date")
+    summary_header = fields.Text("Resumé d'en tete")
+    room_summary = fields.Text("Resumé de la chambre")
 
     @api.model
     def default_get(self, fields):

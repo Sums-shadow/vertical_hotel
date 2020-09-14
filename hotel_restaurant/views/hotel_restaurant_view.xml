@@ -85,7 +85,7 @@
                 <field name="name"/>
                 <field name="capacity"/>
                 <newline/>
-                <group expand="0" string="Group By">
+                <group expand="0" string="Grouper par">
                     <filter name="capacity" string="Capacity" icon="terp-stock_symbol-selection"
                             context="{'group_by':'capacity'}"/>
                 </group>
@@ -144,7 +144,7 @@
                             <field name="end_date"/>
                         </group>
                         <group colspan="4">
-                            <separator colspan='4' string="Table List"/>
+                            <separator colspan='4' string="Liste de table"/>
                             <field name="tableno" colspan="4" nolabel='1'/>
                         </group>
                     </group>
@@ -178,35 +178,35 @@
     <!-- Action of hotel restaurant reservation -->
     <record id="open_view_hotel_restaurant_reservation_form_tree"
             model="ir.actions.act_window">
-        <field name="name">Table Booking</field>
+        <field name="name">Réservation de table</field>
         <field name="res_model">hotel.restaurant.reservation</field>
         
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_hotel_restaurant_reservation_tree"/>
     </record>
 
-    <menuitem name="Table Booking"
+    <menuitem name="Réservation de table"
               id="menu_open_view_hotel_restaurant_reservation_form_tree"
               action="open_view_hotel_restaurant_reservation_form_tree"
               parent="hotel_restaurant_menu"/>
 
     <!-- ======= Orders for Reservation ======= -->
-    <!-- Form view of hotel reservation order -->
+    <!-- Form view of hotel commande de reservation -->
     <record id="view_hotel_reservation_order_form" model="ir.ui.view">
         <field name="name">hotel_reservation_order.form</field>
         <field name="model">hotel.reservation.order</field>
         <field name="arch" type="xml">
             <form string="Order">
                 <header>
-                    <button string="Generate KOT" name="reservation_generate_kot"
+                    <button string="Generer KOT" name="reservation_generate_kot"
                             type="object" states="draft" icon="fa-arrow-right" class="oe_highlight"/>
-                    <button string="Generate KOT" name="reservation_update_kot"
+                    <button string="Generer KOT" name="reservation_update_kot"
                             type="object" states="order" icon="fa-arrow-right" class="oe_highlight"/>
-                    <button string="Done" name="done_kot" type="object" states="order"
+                    <button string="Terminé" name="done_kot" type="object" states="order"
                             icon="fa-check" class="oe_highlight"/>
                     <button name="%(report_hotel_reservation_order_bill)d"
                            
-                            type="action" string="Generate Bill" class="oe_highlight"/>
+                            type="action" string="Generer Bill" class="oe_highlight"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
@@ -228,9 +228,9 @@
                         <separator colspan='4' string='Table List'/>
                         <field name="table_no" colspan="4" nolabel='1'/>
                         <newline/>
-                        <separator colspan='4' string='Order List'/>
+                        <separator colspan='4' string='Liste des commandes'/>
                         <field name="order_list" colspan="4" nolabel='1'>
-                            <form string="Order List">
+                            <form string="Liste des commandes">
                                 <group>
                                     <field name="name"/>
                                     <field name="item_qty"/>
@@ -238,7 +238,7 @@
                                     <field name="price_subtotal" invisible="1"/>
                                 </group>
                             </form>
-                            <tree string="Order List">
+                            <tree string="Liste des commandes">
                                 <field name="name"/>
                                 <field name="item_qty"/>
                                 <field name="item_rate"/>
@@ -260,12 +260,12 @@
         </field>
     </record>
 
-    <!-- Tree view of hotel reservation order -->
+    <!-- Tree view of hotel commande de reservation -->
     <record id="view_hotel_reservation_order_tree" model="ir.ui.view">
         <field name="name">hotel_reservation_order.tree</field>
         <field name="model">hotel.reservation.order</field>
         <field name="arch" type="xml">
-            <tree string="Order">
+            <tree string="Commande">
                 <field name="order_number"/>
                 <field name="reservationno"/>
                 <field name="order_date"/>
@@ -277,18 +277,18 @@
         </field>
     </record>
 
-    <!-- Search view of hotel reservation order -->
+    <!-- Search view of hotel commande de reservation -->
     <record id="view_hotel_reservation_order_search" model="ir.ui.view">
         <field name="name">hotel.reservation.order.search</field>
         <field name="model">hotel.reservation.order</field>
         <field name="arch" type="xml">
-            <search string="Reservation Order">
+            <search string="commande de reservation">
                 <filter name="today"
                         domain="[('order_date','&gt;=',datetime.datetime.now().replace(hour=0, minute=0, second=0)),('order_date','&lt;=',datetime.datetime.now().replace(hour=23, minute=59, second=59))]"
                         string="Today's Orders"/>
                 <field name="reservationno"/>
                 <group expand="0" string="Group By">
-                    <filter name="waitername" string="Waiter Name" icon="terp-personal"
+                    <filter name="waitername" string="Nom du serveur" icon="terp-personal"
                             domain="[]" context="{'group_by':'waitername'}"/>
                     <filter name="order_date" string="Date" domain="[]"
                             context="{'group_by':'order_date'}"/>
@@ -297,16 +297,16 @@
         </field>
     </record>
 
-    <!-- Action of hotel reservation order -->
+    <!-- Action of hotel commande de reservation -->
     <record id="open_view_hotel_reservation_order_form_tree" model="ir.actions.act_window">
-        <field name="name">Order</field>
+        <field name="name">Commande</field>
         <field name="res_model">hotel.reservation.order</field>
         
         <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="menu_open_view_hotel_reservation_order_form_tree"
-              name="Orders" action="open_view_hotel_reservation_order_form_tree"
+              name="Commandes" action="open_view_hotel_reservation_order_form_tree"
               parent="hotel_restaurant_menu"/>
 
     <!-- ======= Table Order ======= -->
@@ -315,17 +315,17 @@
         <field name="name">hotel_restaurant_order.form</field>
         <field name="model">hotel.restaurant.order</field>
         <field name="arch" type="xml">
-            <form string="Order">
+            <form string="Commande">
                 <header>
-                    <button string="Generate KOT" name="generate_kot" type="object"
+                    <button string="Generer KOT" name="generate_kot" type="object"
                             states="draft" icon="fa-arrow-right" class="oe_highlight"/>
-                    <button string="Generate KOT" name="generate_kot_update"
+                    <button string="Generer KOT" name="generate_kot_update"
                             type="object" states="order" icon="fa-arrow-right" class="oe_highlight"/>
-                    <button string="Done" name="done_order_kot" type="object"
+                    <button string="Terminé" name="done_order_kot" type="object"
                             states="order" icon="fa-check" class="oe_highlight"/>
-                    <button string="Cancel" name="done_cancel" states="draft,order"
+                    <button string="Annulé" name="done_cancel" states="draft,order"
                             type="object" icon="fa-close" class="oe_highlight"/>
-                    <button string="Set to Draft" name="set_to_draft" states="cancel"
+                    <button string="Mettre comme brouillon" name="set_to_draft" states="cancel"
                             type="object" icon="fa-file-o" class="oe_highlight"/>
                     <button name="%(report_hotel_res_order_bill)d"
                             attrs="{'invisible' : ['|', ('folio_id','!=',False), ('state','in',('draft','order','cancel'))]}"
@@ -356,9 +356,9 @@
                         <separator colspan='4' string='Table List'/>
                         <field name="table_no" colspan="4" nolabel='1'/>
                         <newline/>
-                        <separator colspan='4' string='Order List'/>
+                        <separator colspan='4' string='Liste des commandes'/>
                         <field name="order_list" colspan="4" nolabel='1'>
-                            <form string="Order List">
+                            <form string="Liste des commandes">
                                 <group>
                                     <field name="name"/>
                                     <field name="item_qty"/>
@@ -366,7 +366,7 @@
                                     <field name="price_subtotal" invisible="1"/>
                                 </group>
                             </form>
-                            <tree string="Order List">
+                            <tree string="Liste des commandes">
                                 <field name="name"/>
                                 <field name="item_qty"/>
                                 <field name="item_rate"/>
@@ -393,7 +393,7 @@
         <field name="name">hotel_restaurant_order.tree</field>
         <field name="model">hotel.restaurant.order</field>
         <field name="arch" type="xml">
-            <tree string="Order" >
+            <tree string="Commande" >
                 <field name="order_no"/>
                 <field name="o_date"/>
                 <field name="table_no"/>
@@ -413,10 +413,10 @@
             <search string="Restaurant Order">
                 <filter name="today"
                         domain="[('o_date','&gt;=',datetime.datetime.now().replace(hour=0, minute=0, second=0)),('o_date','&lt;=',datetime.datetime.now().replace(hour=23, minute=59, second=59))]"
-                        string="Today's Orders"/>
+                        string="Commande du jour"/>
                 <field name="order_no"/>
-                <group expand="0" string="Group By">
-                    <filter name="waiter_name" string="waiter name" icon="terp-personal"
+                <group expand="0" string="grouper par">
+                    <filter name="waiter_name" string="Nom du serveur" icon="terp-personal"
                             domain="[]" context="{'group_by':'waiter_name'}"/>
                     <filter name="o_date" string="date" domain="[]"
                             context="{'group_by':'o_date'}"/>
@@ -427,18 +427,18 @@
 
     <!-- Action of hotel restaurant order -->
     <record id="open_view_hotel_restaurant_order_form_tree" model="ir.actions.act_window">
-        <field name="name">Table Order</field>
+        <field name="name">Table de commande</field>
         <field name="res_model">hotel.restaurant.order</field>
         
         <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="menu_open_view_hotel_restaurant_order_form_tree"
-              name="Table Order" action="open_view_hotel_restaurant_order_form_tree"
+              name="Table de commande" action="open_view_hotel_restaurant_order_form_tree"
               sequence="11" parent="hotel_restaurant_menu"/>
 
 
-    <!-- ======= Kitchen Order List ======= -->
+    <!-- ======= Kitchen Liste des commandes ======= -->
     <!-- Form view of hotel restaurant kitchen order tickets -->
     <record id="view_hotel_restaurant_kitchen_order_tickets_form"
             model="ir.ui.view">
@@ -460,19 +460,19 @@
                             <field name="w_name"/>
                         </group>
                         <newline/>
-                        <separator colspan='4' string='Table List'/>
+                        <separator colspan='4' string='Liste Table '/>
                         <field name="tableno" colspan="4" nolabel='1'/>
                         <newline/>
-                        <separator colspan='4' string='Order List'/>
+                        <separator colspan='4' string='Liste de commande'/>
                         <field name="kot_list" colspan="4" nolabel='1'>
-                            <form string="Order List">
+                            <form string="Liste de commande">
                                 <group>
                                     <field name="name"/>
                                     <field name="item_qty"/>
                                     <field name="item_rate"/>
                                 </group>
                             </form>
-                            <tree string="Order List">
+                            <tree string="Liste de commande">
                                 <field name="name"/>
                                 <field name="item_qty"/>
                             </tree>
@@ -507,13 +507,13 @@
         </field>
         <field name="model">hotel.restaurant.kitchen.order.tickets</field>
         <field name="arch" type="xml">
-            <search string="Restaurant kitchen Order">
+            <search string="Commande de cuisine de restaurant">
                 <filter name="today"
                         domain="[('kot_date','&gt;=',datetime.datetime.now().replace(hour=0, minute=0, second=0)),('kot_date','&lt;=',datetime.datetime.now().replace(hour=23, minute=59, second=59))]"
-                        string="Today's Orders"/>
+                        string="Commandes du jour"/>
                 <field name="orderno"/>
                 <group expand="0" string="Group By">
-                    <filter name="w_name" string="Waiter Name" icon="terp-personal"
+                    <filter name="w_name" string="Nom du serveur" icon="terp-personal"
                             domain="[]" context="{'group_by':'w_name'}"/>
                     <filter name="kot_date" string="Date" domain="[]"
                             context="{'group_by':'kot_date'}"/>
@@ -531,7 +531,7 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Kitchen Order Ticket"
+    <menuitem name="Ticket de commande de cuisine"
               id="menu_open_view_hotel_restaurant_kitchen_order_tickets_form_tree"
               action="open_view_hotel_restaurant_kitchen_order_tickets_form_tree"
               sequence="12" parent="hotel_restaurant_menu"/>
@@ -542,11 +542,11 @@
         <field name="name">hotel_menucard_type_form</field>
         <field name="model">hotel.menucard.type</field>
         <field name="arch" type="xml">
-            <form string="Hotel Food Items Type">
+            <form string="Type de produits alimentaires de l'hôtel">
                 <sheet>
                     <group>
-                        <field name="name" string="Food Item Name"/>
-                        <field name="menu_id" string="Food Item Type"/>
+                        <field name="name" string="Nom de l'aliment"/>
+                        <field name="menu_id" string="Type d'élément alimentaire"/>
                         <field name="child_ids" invisible="1"/>
                     </group>
                 </sheet>
@@ -559,7 +559,7 @@
         <field name="name">hotel_menucard_type_list</field>
         <field name="model">hotel.menucard.type</field>
         <field name="arch" type="xml">
-            <tree string="Hotel Food Items Type">
+            <tree string="Type de produits alimentaires de l'hôtel">
                 <field name="name"/>
             </tree>
         </field>
@@ -567,7 +567,7 @@
 
     <!-- Action of hotel menu card type -->
     <record id="action_hotel_menucard_type_view_form" model="ir.actions.act_window">
-        <field name="name">Food Item Type</field>
+        <field name="name">Type d'élément alimentaire</field>
         <field name="res_model">hotel.menucard.type</field>
         
         <field name="view_mode">tree,form</field>
@@ -575,7 +575,7 @@
 
     <menuitem id="menu_hotel_food_item" name="Food Item"
               parent="hotel.hotel_configuration_menu" sequence="2"/>
-    <menuitem id="menu_action_hotel_menucard_type_view_form" name="Food Item Types"
+    <menuitem id="menu_action_hotel_menucard_type_view_form" name="Type d'élément alimentaires"
               action="action_hotel_menucard_type_view_form" parent="menu_hotel_food_item"
               sequence="12"/>
 
@@ -589,7 +589,7 @@
                     <field name="image" widget="image" class="oe_avatar oe_left"/>
                     <div class="oe_title">
                         <div class="oe_edit_only">
-                            <label for="name" string="Food Item Name"/>
+                            <label for="name" string="Nom du produit alimentaire"/>
                         </div>
                         <h1>
                             <field name="name"/>
@@ -599,23 +599,23 @@
                         <page string="Information">
                             <group colspan="4" col="2">
                                 <group colspan="4" col="4">
-                                    <field name="type" select="2" string="Food Type"/>
-                                    <field name="categ_id" string="Food Item Type"/>
-                                    <field name="product_manager" select="2" string="Food Manager"/>
+                                    <field name="type" select="2" string="Type d'aliment"/>
+                                    <field name="categ_id" string="Type d"/>
+                                    <field name="product_manager" select="2" string="Gestionneur d'aliment"/>
                                     <field name="uom_id"/>
                                     <field name="uom_po_id"/>
                                 </group>
                             </group>
                             <newline/>
-                            <separator string="Supplier Taxes" colspan='4'/>
+                            <separator string="Taxes Fournisseur" colspan='4'/>
                             <field name="supplier_taxes_id" colspan="4"
-                                   help='List of supplier taxes applied on the perticular Food Item. '/>
+                                   help="Liste des taxes des fournisseurs appliquées à l'aliment particulier."/>
                             <newline/>
-                            <separator string="Customer Taxes" colspan='4'/>
+                            <separator string="Taxes Client" colspan='4'/>
                             <field name="taxes_id" colspan="4"
-                                   help='List of customer taxes applied on the perticular Food Item.'/>
+                                   help="Liste des taxes douanières appliquées sur l'aliment particulier."/>
                         </page>
-                        <page string="Procurement">
+                        <page string="Approvisionnement">
                             <group colspan="4" col="4">
                                 <field name="cost_method"/>
                                 <field name="active" select="2"/>
@@ -624,7 +624,7 @@
                                 <field name="standard_price"/>
                                 <field name="rental" select="2"/>
                                 <field name="price_extra"/>
-                                <separator string="Suppliers" colspan='4'/>
+                                <separator string="Fournisseur" colspan='4'/>
                                 <field name="seller_ids" colspan="4" nolabel="1"
                                        widget="one2many_list"/>
                             </group>
@@ -632,9 +632,9 @@
                         <page string="Descriptions">
                             <separator string="Description"/>
                             <field name="description" colspan="4" nolabel="1"/>
-                            <separator string="Sale Description"/>
+                            <separator string="Description de vente"/>
                             <field name="description_sale" colspan="4" nolabel="1"/>
-                            <separator string="Purchase Description"/>
+                            <separator string="Description d'achat"/>
                             <field name="description_purchase" colspan="4" nolabel="1"/>
                         </page>
                     </notebook>
@@ -648,10 +648,10 @@
         <field name="name">hotel.menucard.tree</field>
         <field name="model">hotel.menucard</field>
         <field name="arch" type="xml">
-            <tree string="Hotel Menucard">
+            <tree string="Hôtel Menucard">
                 <field name="name"/>
-                <field name="categ_id" string="Food Item Type"/>
-                <field name="list_price" string="Food Item Rate"/>
+                <field name="categ_id" string="Type d'élément alimentaire"/>
+                <field name="list_price" string="Taux d'article de nourriture"/>
             </tree>
         </field>
     </record>
@@ -663,7 +663,7 @@
         <field name="arch" type="xml">
             <search string="Hotel Menucard">
                 <field name="name"/>
-                <field name="categ_id" string="Food Item Type"/>
+                <field name="categ_id" string="Type d'élément alimentaire"/>
                 <field name="list_price"/>
                 <separator/>
                 <!-- <group expand="0" string="Group By">
@@ -702,11 +702,11 @@
                                 <div name="tags"/>
                                 <ul>
                                     <li>
-                                        Price:
+                                        Prix:
                                         <field name="lst_price"></field>
                                     </li>
                                     <li>
-                                        Category:
+                                        Categorie:
                                         <field name="categ_id"></field>
                                     </li>
                                 </ul>
@@ -720,7 +720,7 @@
 
     <!-- Action of hotel menu card -->
     <record id="action_hotel_menucard_form" model="ir.actions.act_window">
-        <field name="name">Food Item</field>
+        <field name="name">Produit alimentaire</field>
         <field name="res_model">hotel.menucard</field>
         
         <field name="view_mode">kanban,tree,form</field>
@@ -729,15 +729,15 @@
         <field name="search_view_id" ref="view_hotel_menucard_search_new"/>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
-                Click to Add Food Items
+                Cliquez pour ajouter des produits alimentaires
             </p>
             <p>
-                No Food Items
+                Aucun article alimentaire
             </p>
         </field>
     </record>
 
-    <menuitem name="Food Items" id="menu_open_hotel_menucard_form"
+    <menuitem name="Produits alimentaires" id="menu_open_hotel_menucard_form"
               action="action_hotel_menucard_form" parent="menu_hotel_food_item"/>
 
 </odoo>

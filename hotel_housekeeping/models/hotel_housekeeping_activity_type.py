@@ -10,7 +10,7 @@ class HotelHousekeepingActivityType(models.Model):
 
     name = fields.Char("Name", required=True)
     activity_id = fields.Many2one(
-        "hotel.housekeeping.activity.type", "Activity Type"
+        "hotel.housekeeping.activity.type", "Type d'Activité "
     )
 
     def name_get(self):

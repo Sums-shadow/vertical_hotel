@@ -5,10 +5,10 @@
         <field name="name">hotel.room_amenities_type_form</field>
         <field name="model">hotel.room.amenities.type</field>
         <field name="arch" type="xml">
-            <form string="Hotel Room Amenities Type">
+            <form string="Type d'équipements de chambre d'hôtel">
                 <sheet>
                     <group>
-                        <field name="name" string="Amenity Type"/>
+                        <field name="name" string="Type d'équipements"/>
                         <field name="amenity_id"/>
                         <field name="child_ids" invisible="1"/>
                     </group>
@@ -22,7 +22,7 @@
         <field name="name">hotel.room_amenities_type_list</field>
         <field name="model">hotel.room.amenities.type</field>
         <field name="arch" type="xml">
-            <tree string="Hotel Room Amenities Type">
+            <tree string="Type d'équipements de chambre d'hôtel">
                 <field name="name"/>
             </tree>
         </field>
@@ -33,9 +33,9 @@
         <field name="name">hotel.room.amenities.form</field>
         <field name="model">hotel.room.amenities</field>
         <field name="arch" type="xml">
-            <form string="Hotel Room Amenities">
+            <form string="Equipements de chambre d'hôtel">
                 <sheet>
-                    <label for="name" string="Name"/>
+                    <label for="name" string="Nom"/>
                     <h1>
                         <field name="name"/>
                     </h1>
@@ -43,37 +43,37 @@
                         <page string="Information">
                             <group colspan="4" col="4">
                                 <field name="type" select="2"
-                                       string="Amenity Type"/>
+                                       string="Type d'équipements"/>
                                 <field name="categ_id"
-                                       string="Amenities Category"/>
+                                       string="Categorie equipement"/>
                                 <field name="product_manager" select="2"
-                                       string="Amenity manager"/>
+                                       string="Gestionnaire d'equipement"/>
                                 <field name="uom_id"/>
                                 <field name="default_code"/>
                                 <field name="uom_po_id"/>
                             </group>
                             <newline/>
-                            <separator colspan='4' string="Supplier Taxes"/>
+                            <separator colspan='4' string="Taxes fournisseur"/>
                             <field name="supplier_taxes_id" colspan="4"
                                    nolabel='1'
-                                   help='Define supplier taxes if there any on the ty. '/>
+                                   help="Définissez les taxes fournisseurs, le cas échéant."/>
                             <newline/>
-                            <separator colspan='4' string="Customer Taxes"/>
+                            <separator colspan='4' string="taxes fournisseur"/>
                             <field name="taxes_id" colspan="4" nolabel='1'
-                                   help='List of customer taxes applied on the ty. '/>
+                                   help="Liste des taxes client appliquées sur le ty."/>
                         </page>
-                        <page string="Procurement">
+                        <page string="Approvisionnement">
                             <group colspan="4" col="4">
                                 <field name="active" select="2"/>
                                 <field name="list_price"/>
-                                <field name="cost_method" string="Cost Method"/>
+                                <field name="cost_method" string="Methode coût"/>
                                 <field name="sale_ok" select="2"/>
                                 <field name="standard_price"/>
                                 <field name="rental" select="2"/>
                             </group>
                             <newline/>
                             <group>
-                                <separator string="Suppliers"/>
+                                <separator string="Fournisseur"/>
                                 <field name="seller_ids" colspan="4" nolabel="1"
                                        widget="one2many_list"/>
                             </group>
@@ -81,10 +81,10 @@
                         <page string="Descriptions">
                             <separator string="Description"/>
                             <field name="description" colspan="4" nolabel="1"/>
-                            <separator string="Sale Description"/>
+                            <separator string="Description vente"/>
                             <field name="description_sale" colspan="4"
                                    nolabel="1"/>
-                            <separator string="Purchase Description"/>
+                            <separator string="Description d'achat"/>
                             <field name="description_purchase" colspan="4"
                                    nolabel="1"/>
                         </page>
@@ -99,10 +99,10 @@
         <field name="name">hotel.room_amenities_search</field>
         <field name="model">hotel.room.amenities</field>
         <field name="arch" type="xml">
-            <search string="Hotel Room Amenities">
+            <search string="Services de la chambre d'hôtel">
                 <field name="name"/>
-                <field name="categ_id" string="Amenities Category"/>
-                <field name="list_price" string="Amenity rate"/>
+                <field name="categ_id" string="Catégorie d'equipement"/>
+                <field name="list_price" string="Prix d'equipement"/>
             </search>
         </field>
     </record>
@@ -114,8 +114,8 @@
         <field name="arch" type="xml">
             <tree string="Hotel Room Amenities">
                 <field name="name"/>
-                <field name="categ_id" string="Amenities Category"/>
-                <field name="list_price" string="Amenity Rate" invisible="1"/>
+                <field name="categ_id" string="Catégorie d'equipement"/>
+                <field name="list_price" string="Prix d'equipement" invisible="1"/>
             </tree>
         </field>
     </record>

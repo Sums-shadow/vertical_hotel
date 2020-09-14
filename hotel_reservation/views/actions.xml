@@ -11,7 +11,7 @@
 
     <!-- Action for Room Reservation Summary -->
     <record id="action_hotel_reservation_summary" model="ir.actions.act_window">
-        <field name="name">Reservation Summary</field>
+        <field name="name">Résumé de la réservation</field>
         <field name="res_model">room.reservation.summary</field>
         <field name="view_mode">form</field>
     </record>

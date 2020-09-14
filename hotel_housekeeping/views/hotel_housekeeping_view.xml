@@ -9,26 +9,26 @@
         <field name="arch" type="xml">
             <form string="Housekeeping">
                 <header>
-                    <button string="Clean" name="room_clean" states="inspect,dirty"
+                    <button string="Nettoyer" name="room_clean" states="inspect,dirty"
                             type="object" class="btn btn-primary">
                         <i class="fa fa-paint-brush"/>
                     </button>
-                    <button string="Dirty" name="action_set_to_dirty"
+                    <button string="Sale" name="action_set_to_dirty"
                             states="inspect,clean" type="object"
                             class="btn btn-primary">
                         <i class="fa-pencil-square-o"/>
                     </button>
-                    <button string="Done" name="room_done" states="clean"
+                    <button string="Terminé" name="room_done" states="clean"
                             type="object"
                             class="btn btn-primary">
                         <i class="fa-check"/>
                     </button>
-                    <button string="Cancel" name="room_cancel" states="clean,dirty,inspect"
+                    <button string="Annuler" name="room_cancel" states="clean,dirty,inspect"
                             type="object"
                             class="btn btn-primary">
                         <i class="fa-times-circle"/>
                     </button>
-                    <button string="Inspect" name="room_inspect" states="cancel"
+                    <button string="Inspecter" name="room_inspect" states="cancel"
                             type="object"
                             class="btn btn-primary">
                         <i class="fa-search"/>
@@ -50,10 +50,10 @@
                     </group>
                     <newline/>
                     <newline/>
-                    <separator string="Activity Lines" colspan="4"/>
+                    <separator string="Ligne d'activité" colspan="4"/>
                     <field name="activity_line_ids" context="{'room_id':room_no, 'today_date':current_date}"
                            colspan="4" nolabel="1">
-                        <form string="Activity Lines">
+                        <form string="Ligne d'activité">
                             <group colspan="4" col="4">
                                 <field name="today_date"/>
                                 <field name="activity_name"/>
@@ -64,13 +64,13 @@
                             <div class="oe_title">
                                 <div class="oe_edit_only">
                                     <field name="dirty"/>
-                                    <label for="dirty" string="Is Dirty?"/>
+                                    <label for="dirty" string="Es sale?"/>
                                     <field name="clean"/>
-                                    <label for="clean" string="Is Clean?"/>
+                                    <label for="clean" string="Es propre?"/>
                                 </div>
                             </div>
                         </form>
-                        <tree string="Activity Lines" editable="buttom">
+                        <tree string="Ligne d'activité" editable="buttom">
                             <field name="activity_name"/>
                             <field name="housekeeper_id"/>
                             <field name="today_date"/>
@@ -91,7 +91,7 @@
         <field name="name">hotel.housekeeping.tree</field>
         <field name="model">hotel.housekeeping</field>
         <field name="arch" type="xml">
-            <tree string="Housekeeping12">
+            <tree string="Entretien ménager">
                 <field name="current_date"/>
                 <field name="clean_type"/>
                 <field name="room_no"/>
@@ -107,15 +107,15 @@
 
     <!-- Action for hotel housekeeping -->
     <record id="open_hotel_housekeeping_form_tree" model="ir.actions.act_window">
-        <field name="name">Housekeeping Services</field>
+        <field name="name">Services d'entretien ménager </field>
         <field name="res_model">hotel.housekeeping</field>
         
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_hotel_housekeeping_tree"/>
     </record>
-    <menuitem id="menu_housekeeping" name="Housekeeping Services"
+    <menuitem id="menu_housekeeping" name="Services d'entretien ménager "
               parent="hotel.hotel_management_menu" sequence="2"/>
-    <menuitem name="Housekeeping Services" id="menu_open_hotel_housekeeping_form_tree"
+    <menuitem name="Services d'entretien ménager " id="menu_open_hotel_housekeeping_form_tree"
               action="open_hotel_housekeeping_form_tree" parent="menu_housekeeping"
               sequence="4"/>
 
@@ -125,10 +125,10 @@
         <field name="name">hotel_housekeeping_activity_type_form</field>
         <field name="model">hotel.housekeeping.activity.type</field>
         <field name="arch" type="xml">
-            <form string="Housekeeping Activity Types">
+            <form string="Types d'activity d'entretien ménager">
                 <sheet>
                     <group>
-                        <field name="name" string="Activity Name"/>
+                        <field name="name" string="Nom de l'activité"/>
                         <field name="activity_id"/>
                     </group>
                 </sheet>
@@ -141,7 +141,7 @@
         <field name="name">hotel_housekeeping_activity_type_list</field>
         <field name="model">hotel.housekeeping.activity.type</field>
         <field name="arch" type="xml">
-            <tree string="Housekeeping Activity Types">
+            <tree string=" Types d''activité d'entretien ménager ">
                 <field name="name"/>
             </tree>
         </field>
@@ -150,7 +150,7 @@
     <!-- Action of hotel housekeeping activity type -->
     <record id="action_hotel_housekeeping_activity_type_view_form"
             model="ir.actions.act_window">
-        <field name="name">Activity Types</field>
+        <field name="name">Type d'activité</field>
         <field name="res_model">hotel.housekeeping.activity.type</field>
         
         <field name="view_mode">tree,form</field>
@@ -167,7 +167,7 @@
         <field name="name">hotel.activity.form</field>
         <field name="model">hotel.activity</field>
         <field name="arch" type="xml">
-            <form string="Housekeeping Activity">
+            <form string="Activité d'entretien ménager">
                 <sheet>
                     <group>
                         <field name="name" string="Activity Name"/>
@@ -183,11 +183,11 @@
         <field name="name">hotel.activity.search</field>
         <field name="model">hotel.activity</field>
         <field name="arch" type="xml">
-            <search string="Housekeeping Activity">
+            <search string="Activité d'entretien ménager">
                 <field name="name"/>
                 <field name="categ_id"/>
                 <newline/>
-                <group expand="0" string="Group By...">
+                <group expand="0" string="Grouper en...">
                     <filter name="categ_id" string="Catagory" icon="terp-stock_symbol-selection"
                             domain="[]" context="{'group_by':'categ_id'}"/>
                 </group>
@@ -200,7 +200,7 @@
         <field name="name">hotel.activity.tree</field>
         <field name="model">hotel.activity</field>
         <field name="arch" type="xml">
-            <tree string="Housekeeping Activity">
+            <tree string="Activité d'entretien ménager">
                 <field name="name"/>
                 <field name="categ_id"/>
             </tree>

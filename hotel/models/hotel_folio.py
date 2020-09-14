@@ -67,11 +67,11 @@ class FolioRoomLine(models.Model):
     _description = "Hotel Room Reservation"
     _rec_name = "room_id"
 
-    room_id = fields.Many2one("hotel.room", "Room id")
-    check_in = fields.Datetime("Check In Date", required=True)
-    check_out = fields.Datetime("Check Out Date", required=True)
-    folio_id = fields.Many2one("hotel.folio", string="Folio Number")
-    status = fields.Selection(string="state", related="folio_id.state")
+    room_id = fields.Many2one("hotel.room", "chambre id")
+    check_in = fields.Datetime("Date d'arrivée", required=True)
+    check_out = fields.Datetime("Date de départ", required=True)
+    folio_id = fields.Many2one("hotel.folio", string="Nombre de Folio ")
+    status = fields.Selection(string="Etat", related="folio_id.state")
 
 
 class HotelFolio(models.Model):
@@ -150,20 +150,20 @@ class HotelFolio(models.Model):
     _order = "id"
 
     name = fields.Char(
-        "Folio Number", readonly=True, index=True, default="New"
+        "Nombre Folio", readonly=True, index=True, default="New"
     )
     order_id = fields.Many2one(
         "sale.order", "Order", delegate=True, required=True, ondelete="cascade"
     )
     checkin_date = fields.Datetime(
-        "Check In",
+        "Enregistrement",
         required=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
         default=_get_checkin_date,
     )
     checkout_date = fields.Datetime(
-        "Check Out",
+        "Check-out",
         required=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
@@ -187,9 +187,9 @@ class HotelFolio(models.Model):
     )
     hotel_policy = fields.Selection(
         [
-            ("prepaid", "On Booking"),
-            ("manual", "On Check In"),
-            ("picking", "On Checkout"),
+            ("prepaid", "Sur réservation"),
+            ("manual", "Lors de l'enregistrement"),
+            ("picking", "À la caisse"),
         ],
         "Hotel Policy",
         default="manual",

@@ -10,7 +10,7 @@ class HotelHousekeeping(models.Model):
     _rec_name = "room_no"
 
     current_date = fields.Date(
-        "Today's Date",
+        "Date actuelle",
         required=True,
         index=True,
         states={"done": [("readonly", True)]},
@@ -18,17 +18,17 @@ class HotelHousekeeping(models.Model):
     )
     clean_type = fields.Selection(
         [
-            ("daily", "Daily"),
-            ("checkin", "Check-In"),
+            ("daily", "quotidien"),
+            ("checkin", "Enregistrement"),
             ("checkout", "Check-Out"),
         ],
-        "Clean Type",
+        "Type de nettoyage",
         required=True,
         states={"done": [("readonly", True)]},
     )
     room_no = fields.Many2one(
         "hotel.room",
-        "Room No",
+        "No chambre",
         required=True,
         states={"done": [("readonly", True)]},
         index=True,
@@ -42,36 +42,36 @@ class HotelHousekeeping(models.Model):
     )
     inspector_id = fields.Many2one(
         "res.users",
-        "Inspector",
+        "Inspecteur",
         required=True,
         index=True,
         states={"done": [("readonly", True)]},
     )
     inspect_date_time = fields.Datetime(
-        "Inspect Date Time",
+        "Inspection Date & heure",
         required=True,
         states={"done": [("readonly", True)]},
     )
     quality = fields.Selection(
         [
-            ("excellent", "Excellent"),
-            ("good", "Good"),
-            ("average", "Average"),
-            ("bad", "Bad"),
+            ("excellent", "Excellente"),
+            ("good", "Bonne"),
+            ("average", "Moyenne"),
+            ("bad", "Mauvaise"),
             ("ok", "Ok"),
         ],
-        "Quality",
+        "Qualité",
         states={"done": [("readonly", True)]},
         help="Inspector inspect the room and mark \
                                 as Excellent, Average, Bad, Good or Ok. ",
     )
     state = fields.Selection(
         [
-            ("inspect", "Inspect"),
-            ("dirty", "Dirty"),
-            ("clean", "Clean"),
-            ("done", "Done"),
-            ("cancel", "Cancelled"),
+            ("inspect", "Inspecter"),
+            ("dirty", "Sale"),
+            ("clean", "Propre"),
+            ("done", "Fait"),
+            ("cancel", "Annulé"),
         ],
         "State",
         states={"done": [("readonly", True)]},
@@ -111,7 +111,7 @@ class HotelHousekeeping(models.Model):
         @param self: object pointer
         """
         if not self.quality:
-            raise ValidationError(_("Please update quality of work!"))
+            raise ValidationError(_("Veuillez mettre à jour la qualité du travail!"))
         self.state = "done"
 
     

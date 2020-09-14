@@ -9,7 +9,7 @@
 
 
     <menuitem id="menu_action_hotel_reservation_summary"
-              name="Reservation Summary"
+              name="Resumé de la reservation"
               action="action_hotel_reservation_summary"
               parent="menu_hotel_reservation"
               sequence="3"/>

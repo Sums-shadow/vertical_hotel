@@ -5,10 +5,10 @@
         <field name="name">hotel.service_type.form</field>
         <field name="model">hotel.service.type</field>
         <field name="arch" type="xml">
-            <form string="Service Type">
+            <form string="type de service">
                 <sheet>
                     <group>
-                        <field name="name" string="Service Name"/>
+                        <field name="name" string="Nom du Service"/>
                         <field name="service_id"/>
                         <field name="child_ids" invisible="1"/>
                     </group>
@@ -22,7 +22,7 @@
         <field name="name">hotel.service_type.tree</field>
         <field name="model">hotel.service.type</field>
         <field name="arch" type="xml">
-            <tree string="Service Type">
+            <tree string="type de service">
                 <field name="name"/>
             </tree>
         </field>

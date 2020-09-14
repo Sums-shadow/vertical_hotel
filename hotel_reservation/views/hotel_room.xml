@@ -7,12 +7,12 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='information_hotel_room']"
                    position="after">
-                <page string="Room Reservation">
-                    <separator colspan='4' string="Room Reservation Line"/>
+                <page string="Reservation de chambre">
+                    <separator colspan='4' string="Ligne de reservation de chambre"/>
                     <field name="room_reservation_line_ids" colspan="4"
                            nolabel='1'
-                           string="Room Reservation Line">
-                        <form string=" Room line">
+                           string="Ligne de reservation de chambre">
+                        <form string="Ligne de chambre">
                             <group colspan='4' col='4'>
                                 <field name="room_id"/>
                                 <field name="check_in"/>

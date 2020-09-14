@@ -2,7 +2,7 @@
 <odoo>
     <!-- Action of hotel floor -->
     <record id="open_hotel_floor_form_tree" model="ir.actions.act_window">
-        <field name="name">Floor</field>
+        <field name="name">Etage</field>
         <field name="res_model">hotel.floor</field>
         
         <field name="view_mode">tree,form</field>
@@ -10,7 +10,7 @@
 
     <!-- Action for hotel room type -->
     <record id="open_hotel_room_type_form_tree" model="ir.actions.act_window">
-        <field name="name">Room Type</field>
+        <field name="name">Type chambre</field>
         <field name="res_model">hotel.room.type</field>
         
         <field name="context">{}</field>
@@ -20,7 +20,7 @@
     <!-- Action for hotel room amenities type -->
     <record id="action_hotel_room_amenities_type_view_form"
             model="ir.actions.act_window">
-        <field name="name">Amenities Type</field>
+        <field name="name">Type equipement</field>
         <field name="res_model">hotel.room.amenities.type</field>
         <field name="context">{}</field>
         
@@ -30,7 +30,7 @@
     <!-- Action for hotel room amenities -->
     <record id="action_hotel_room_amenities_view_form"
             model="ir.actions.act_window">
-        <field name="name">Amenities</field>
+        <field name="name">Equimenents</field>
         <field name="res_model">hotel.room.amenities</field>
         
         <field name="view_mode">tree,form</field>
@@ -42,7 +42,7 @@
 
     <!-- Action for hotel room -->
     <record id="action_hotel_room_form" model="ir.actions.act_window">
-        <field name="name">Room</field>
+        <field name="name">Chambre</field>
         <field name="res_model">hotel.room</field>
         
         <field name="context">
@@ -54,7 +54,7 @@
 
     <!-- Action for hotel folio -->
     <record id="open_hotel_folio1_form_tree_all" model="ir.actions.act_window">
-        <field name="name">Generate Folio</field>
+        <field name="name">Generer Folio</field>
         <field name="res_model">hotel.folio</field>
         
         <field name="view_mode">tree,form,calendar,graph</field>
@@ -64,7 +64,7 @@
     <!-- Action for hotel service type -->
     <record id="open_hotel_service_type_form_tree"
             model="ir.actions.act_window">
-        <field name="name">Service Type</field>
+        <field name="name">Type Service</field>
         <field name="res_model">hotel.service.type</field>
         
         <field name="view_mode">tree,form</field>

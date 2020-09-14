@@ -8,4 +8,4 @@ from odoo import fields, models
 class HotelReservation(models.Model):
     _inherit = "hotel.reservation"
 
-    housekeeping_note = fields.Char(string="Housekeeping Note", required=False)
+    housekeeping_note = fields.Char(string="Note d'entretien ménager", required=False)

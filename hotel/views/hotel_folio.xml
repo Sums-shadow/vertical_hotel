@@ -6,25 +6,25 @@
         <field name="arch" type="xml">
             <form string="Folio">
                 <header>
-                    <button name="action_confirm" states="draft" string="Confirm Sale" class="btn-primary" type="object"/>
-                    <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice" type="action" class="btn-primary" />
-                    <button name="action_cancel_draft" states="cancel" string="Set to Draft" type="object" icon="fa-check-square-o" class="oe_highlight"/>
-                    <button name="action_cancel" string="Cancel Folio" states="sale" type="object" icon="fa-close" class="oe_highlight"/>
-                    <button name="action_cancel" string="Cancel Folio" states="draft" icon="fa-close" type="object" class="oe_highlight"/>
-                    <button name="action_done" type="object" string="Set to Done" states="sale" class="oe_highlight" help="If a Hotel Folio is done, you cannot modify it manually anymore. However, you will still be able to invoice or deliver. This is used to freeze the Hotel Folio."/>
+                    <button name="action_confirm" states="draft" string="Confirme vente" class="btn-primary" type="object"/>
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Créer facure" type="action" class="btn-primary" />
+                    <button name="action_cancel_draft" states="cancel" string="Mettre au brouillon" type="object" icon="fa-check-square-o" class="oe_highlight"/>
+                    <button name="action_cancel" string="Cancel Folio" states="Vente" type="object" icon="fa-close" class="oe_highlight"/>
+                    <button name="action_cancel" string="Cancel Folio" states="Brouillon" icon="fa-close" type="object" class="oe_highlight"/>
+                    <button name="action_done" type="object" string="Terminé" states="sale" class="oe_highlight" help="If a Hotel Folio is done, you cannot modify it manually anymore. However, you will still be able to invoice or deliver. This is used to freeze the Hotel Folio."/>
                     <field name="state" select="2" widget="statusbar" statusbar_visible="draft,sent,sale,done"/>
                 </header>
                 <sheet>
 
                     <group colspan="4" col="4">
                         <field name="date_order" readonly="1"/>
-                        <field name="warehouse_id" string="Branch"/>
+                        <field name="warehouse_id" string="Branche"/>
 
                         <field name="hotel_invoice_id" states='sale,done,cancel' readonly="1"/>
                     </group>
                     <notebook colspan="4">
                          
-                        <page string="Other data">
+                        <page string="Autre donées">
                             <group>
                                 <field name="user_id"/>
                                 <field name="hotel_policy" />
@@ -32,7 +32,7 @@
                             </group>
                         </page>
                         <page string="History">
-                            <separator string="Related invoices" colspan="4"/>
+                            <separator string="Facture relative" colspan="4"/>
                             <field name="invoice_ids" colspan="4" nolabel="1"/>
                         </page>
                     </notebook>
